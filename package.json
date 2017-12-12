@@ -1,11 +1,38 @@
 {
-  "name": "R7FrontendTest",
-  "version": "0.0.1",
+  "name": "elo7-test",
+  "version": "1.0.0",
+  "description": "elo7-test",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --devtool eval --progress --colors --hot --inline --host 0.0.0.0 --config webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luanvpereira/elo7-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luanvpereira/elo7-test/issues"
+  },
+  "homepage": "https://github.com/luanvpereira/elo7-test#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.2.3",
+    "css-loader": "^0.26.1",
+    "extract-loader": "^0.1.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "node-sass": "^4.1.1",
+    "open-browser-webpack-plugin": "0.0.3",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-notifier": "^1.5.0"
   },
   "dependencies": {
-    "connect": "~3.1.1",
-    "serve-static": "~1.5.3"
+    "normalize-scss": "^6.0.0"
   }
 }
