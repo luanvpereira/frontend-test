@@ -1,7 +1,7 @@
 {
-  "name": "elo7-test",
+  "name": "r7-test",
   "version": "1.0.0",
-  "description": "elo7-test",
+  "description": "R7 Test - Fazenda",
   "main": "index.js",
   "scripts": {
     "tests": "karma start",

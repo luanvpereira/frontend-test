@@ -20,9 +20,7 @@ describe('RankingComponent', () => {
 			for(let i = 0, max = fixData.length; i < max; i += 1) {
 				let participant = fixData[i];
 
-				if(!isNaN(participant.positive) && !isNaN(participant.negative)) {
-					fixed = true;
-				} else {
+				if(!(!isNaN(participant.positive) && !isNaN(participant.negative))) {
 					fixed = false;
 					break;
 				}
@@ -52,15 +50,13 @@ describe('RankingComponent', () => {
 			resp.data 	= RankingComponentInstance.fixData(resp.data);
 			resp.total 	= RankingComponentInstance.getTotalVotes(resp.data);
 			resp.data 	= RankingComponentInstance.calcPercentage(resp.data, resp.total);
-			// console.log(resp.data)
+			
 			let isPercentage = true;
 
 			for(let i = 0, max = resp.data.length; i < max; i += 1) {
 				let participant = resp.data[i];
 
-				if(participant.positive <= 100 &&  participant.negative <= 100) {
-					isPercentage = true;
-				} else {
+				if(!(participant.positive <= 100 &&  participant.negative <= 100)) {
 					isPercentage = false;
 					break;
 				}
