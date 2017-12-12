@@ -4,7 +4,7 @@
   "description": "elo7-test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "tests": "karma start",
     "start": "webpack-dev-server --devtool --progress --colors --inline --host 0.0.0.0 --config webpack.dev.js"
   },
   "repository": {
@@ -29,6 +29,12 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.4",
+    "jasmine": "^2.8.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^0.3.8",
+    "karma-webpack": "^1.8.1",
     "node-sass": "^4.1.1",
     "open-browser-webpack-plugin": "0.0.3",
     "sass-loader": "^4.1.1",

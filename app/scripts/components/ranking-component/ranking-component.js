@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import Ajax from '../modules/ajax';
+import Ajax from '../../modules/ajax';
 
 _.templateSettings.variable = "data";
 
@@ -9,7 +9,7 @@ export class RankingComponent {
 			$list: document.querySelector('.ranking-list')
 		}
 
-		this.init();
+		this.fazendaData = '/fazenda.json';
 	}
 
 	getParticipantsTmpl() {
@@ -47,17 +47,14 @@ export class RankingComponent {
 		`
 	}
 
-	getParticipantsData(cb) {
+	getFazendaData(cb) {
 		Ajax({
-			url: './fazenda.json',
+			url: this.fazendaData,
 			success: (response) => {
 				response = JSON.parse(response)
-				response.data = this.fixData(response.data);
-				response.total = this.getTotalVotes(response.data);
-				response.data = this.calcPercentage(response.data, response.total);
 
 				if(typeof cb == 'function') {
-					cb(response.data)
+					cb(response)
 				}
 			}
 		})
@@ -96,7 +93,7 @@ export class RankingComponent {
 			.orderBy(['positive'], ['desc']).value();
 	}
 
-	bindEvents() {
+	_bindEvents() {
 		let btns = this.UI.$list.querySelectorAll('.ranking-item');
 
 		_.forEach(btns, (btn) => {
@@ -108,12 +105,16 @@ export class RankingComponent {
 	}
 
 	init() {
-		this.getParticipantsData((participants) =>  {
+		this.getFazendaData((response) =>  {
+			response.data = this.fixData(response.data);
+			response.total = this.getTotalVotes(response.data);
+			response.data = this.calcPercentage(response.data, response.total);
+
 			let template = _.template(this.getParticipantsTmpl());
-			let proccessedTmpl = template({participants: participants});
+			let proccessedTmpl = template({participants: response.data});
 
 			this.UI.$list.innerHTML = proccessedTmpl;
-			this.bindEvents();
+			this._bindEvents();
 		})
 	}
 }
