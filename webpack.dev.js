@@ -11,6 +11,10 @@ var APP_DIR    = path.resolve(__dirname, 'app');
 module.exports = {
   context: APP_DIR,
 
+  devServer: {
+    disableHostCheck: true
+  }, 
+
   entry: {
     html: APP_DIR + '/index.html',
     bundle: './scripts/index.js'
@@ -18,7 +22,6 @@ module.exports = {
 
   output: {
     path: BUILD_DIR,
-    // publicPath: 'http://127.0.0.1:8080',
     filename: '[name].js'
   },
 
