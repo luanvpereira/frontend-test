@@ -1,0 +1,336 @@
+.ranking {
+	padding: 20px;
+	width: 100%;
+	max-width: 392px;
+	margin: 0 auto;
+
+	&-header {
+		position: relative;
+		width: 100%;
+		height: 133px;
+
+		margin-bottom: 16;
+		margin-bottom: 1rem;
+
+		@include clearfix();
+
+		@media screen and (min-width: 430px) {
+			height: 179px;
+		}
+	}
+
+	&-logo, 
+	&-title {
+		float: left;
+		margin: 0;
+	}
+
+	&-logo {
+		position: relative;
+		z-index: 2;
+
+		> a {
+			background: transparent url(../img/logo.png) center no-repeat;
+			width: 130px;
+			height: 139px;
+
+			background-size: contain;
+
+			display: block;
+			font-size: 0;
+
+			@media screen and (min-width: 430px) {
+				width: 179px;
+				height: 188px;
+			}
+
+			@media screen and (min-width: 768px) {
+				margin-left: -30px;
+			}
+		}
+	}
+
+	&-title {
+		color: $titleColor;
+		text-transform: uppercase;
+		text-align: right;
+		letter-spacing: -0.1em;
+
+		font-weight: 700;
+		@include font-size(22);
+		width: calc(100% - (130px/2));
+
+		background-color: $white;
+		padding: 19px 23px;
+		padding: #{(12/16)}rem #{(23/16)}rem;
+
+		position: absolute;
+		right: 0;
+		bottom: 0;
+
+		border-radius: 2px;
+
+		@media screen and (min-width: 430px) {
+			padding-right: 43px;
+			padding-right: #{(43/16)}rem;
+			width: calc(100% - (179px/2));
+		}
+
+		@media screen and (min-width: 768px) {
+			@include font-size(30);
+		}
+	}
+
+	&-list {
+		display: block;
+		overflow: hidden;
+
+		@media screen and (min-width: 768px) {
+			overflow: inherit;
+			overflow: initial;
+		}
+	}
+
+	&-item {
+		display: table;
+		padding: 20px;
+		width: 100%;
+		height: 100px;
+		@include clearfix();
+		cursor: pointer;
+		transition: border-radius 0.2s ease-in, background-color 0.2s ease-out, margin-top 0.2s ease-out;
+		will-change: border-radius, background-color, margin-top;
+		background-color: $white;
+		position: relative;
+		margin-top: 0;
+
+		&:first-child {
+			border-radius: 2px 2px 0 0;
+		}
+
+		&:last-child {
+			border-radius: 0 0 2px 2px;
+		}
+
+		&:nth-child(even) {
+			background-color: $lightGray;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: $red;
+		}
+
+		&:focus {
+			margin-top: 85px;
+			border-radius: 0;
+
+			.ranking-tooltip {
+				visibility: visible;
+				top: -78px;
+				opacity: 1;
+			}
+
+			@media screen and (min-width: 768px) {
+				margin-top: 0;
+				border-radius: 2px;
+	
+				.ranking-tooltip {
+					visibility: visible;
+					left: calc(100% + 16px);
+					top: 50%;
+					transform: translateY(-50%);
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&-tooltip {
+		background-color: $tooltipBg;
+		width: 100%;
+
+		@include clearfix();
+
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		opacity: 0;
+		visibility: hidden;
+
+		transition: top 0.2s ease-out, opacity 0.3s ease-in;
+		will-change: top, opacity;
+		z-index: 5;
+
+		@media screen and (min-width: 768px) {
+			background-color: transparent;
+			width: 162px;
+			height: 50px;
+
+			&:before {
+				content: '';
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 5.5px 6px 5.5px 0;
+				border-color: transparent #f8f7f7 transparent transparent;
+				@include centerY();
+				top: 51%;
+				left: -6px;
+			}
+		}
+	}
+
+	&-tooltip-box {
+		width: 50%;
+		float: left;
+
+		&:first-child {
+			@media screen and (min-width: 768px) {
+				width: 70px;
+
+				.ranking-tooltip-title {
+					border-radius: 5px 0 0 0;
+				}
+
+				.ranking-tooltip-percent {
+					border-radius: 0 0 0 5px;
+				}
+			}
+		}
+
+		&:last-child {
+			border-left: 1px solid #000;
+
+			@media screen and (min-width: 768px) {
+				width: calc(100% - 70px);
+
+				.ranking-tooltip-title {
+					border-radius: 0 5px 0 0;
+				}
+
+				.ranking-tooltip-percent {
+					border-radius: 0 0 5px 0;
+				}
+			}
+		}
+	}
+
+	&-tooltip-title,
+	&-tooltip-percent {
+		margin: 0;
+	}
+
+	&-tooltip-title {
+		width: 100%;
+		background-color: $red;
+		padding: 10px 20px;
+		text-transform: uppercase;
+		text-align: center;
+		@include font-size(10);
+		color: $white;
+
+		@media screen and (min-width: 768px) {
+			padding-left: 8px;
+			padding-right: 0;
+			text-align: left;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+	}
+
+	&-tooltip-percent {
+		font-weight: 700;
+		@include font-size(24);
+		color: $gray;
+		text-align: center;
+		padding: 10px 0;
+
+		@media screen and (min-width: 768px) {
+			padding-top: 2px;
+			padding-bottom: 0;
+			background-color: $tooltipBg;
+		}
+	}
+
+	&-image-holder {
+		width: 66px;
+		display: table-cell;
+		vertical-align: middle;
+		overflow: hidden;
+		border-radius: 50%;
+		box-shadow: 0 1px 8px rgba(0,0,0,0.3);
+	}
+
+	&-image {
+		width: 66px;
+		height: 66px;
+		position: relative;
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+
+			width: 100%;
+			height: 100%;
+			border-radius: 100%;
+			box-sizing: border-box;
+			border: 4px solid $red;
+
+			z-index: 3;
+
+			transition: border-color 0.2s ease-out;
+			will-change: border;
+
+			.ranking-item:hover &,
+			.ranking-item:focus & {
+				border-color: $white;
+			}
+		}
+
+		> img {
+			width: auto;
+			height: 66px;
+
+			@include center();
+		}
+	}
+
+	&-infos {
+		width: calc(100% - 60px);
+		display: table-cell;
+		vertical-align: middle;
+		padding-left: 20px;
+	}
+
+	&-name,
+	&-description {
+		margin: 0;
+		transition: color 0.2s ease-out;
+		will-change: color;
+	}
+
+	&-name {
+		@include font-size(18);
+		color: $red;
+		margin-bottom: 4px;
+
+		.ranking-item:hover &,
+		.ranking-item:focus & {
+			color: $nameHover;
+		}
+	}
+
+	&-description {
+		@include font-size(12);
+
+		.ranking-item:hover &,
+		.ranking-item:focus & {
+			color: $descriptionHover;
+		}
+	}
+}
