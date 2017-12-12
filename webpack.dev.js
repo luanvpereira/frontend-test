@@ -32,6 +32,14 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.js$/i,
+        loader: 'babel-loader',
+        query: {
+          // plugins: ['transform-runtime'],
+          presets: ['es2015']
+        }
+      },
+      {
         test: /\.s?[ca]ss$/i,
         loader: ExtractTextPlugin.extract([
          'css',

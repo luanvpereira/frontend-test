@@ -1,8 +1,8 @@
 require('../scss/app.scss');
 let _ = require('lodash');
-let Ajax = require('./modules/ajax');
-
 _.templateSettings.variable = "data";
+
+let Ajax = require('./modules/ajax');
 
 class RankingComponent {
 	constructor() {
@@ -97,12 +97,24 @@ class RankingComponent {
 			.orderBy(['positive'], ['desc']).value();
 	}
 
+	bindEvents() {
+		let btns = this.UI.$list.querySelectorAll('.ranking-item');
+
+		_.forEach(btns, (btn) => {
+			btn.addEventListener('click', (e) => {
+				e.preventDefault();
+				e.currentTarget.focus();
+			})
+		})
+	}
+
 	init() {
 		this.getParticipantsData((participants) =>  {
 			let template = _.template(this.getParticipantsTmpl());
 			let proccessedTmpl = template({participants: participants});
 
 			this.UI.$list.innerHTML = proccessedTmpl;
+			this.bindEvents();
 		})
 	}
 }
