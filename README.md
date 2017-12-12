@@ -11,5 +11,5 @@
 
 <p><b>Normalize</b>: Reset css.</p>
 
-<p><b>CSS</b>: Utilizei sass e o pattern BEM para melhor organização dos códigos.</p>
+<p><b>CSS</b>: Utilizei sass e também algo parecido com o BEM para organizar o css.</p>
 
