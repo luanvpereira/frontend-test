@@ -16,7 +16,7 @@ class RankingComponent {
 	getParticipantsTmpl() {
 		return `
 		<% _.forEach(data.participants, function(participant, i){  %>
-			<div class="ranking-item" role="button" data-index="<%= i %>" tabindex="<%= (i + 2) %>">
+			<div class="ranking-item" role="button" tabindex="<%= (i + 2) %>">
 				<div class="ranking-tooltip">
 					<div class="ranking-tooltip-box">
 						<h4 class="ranking-tooltip-title">Gostam</h4>
@@ -33,6 +33,10 @@ class RankingComponent {
 					<div class="ranking-image">
 						<img src="<%= participant.picture %>" alt="<%= participant.name %>">
 					</div>
+
+					<span class="ranking-classification">
+						<%= i+1 %>
+					</span>
 				</div>
 
 				<div class="ranking-infos">
